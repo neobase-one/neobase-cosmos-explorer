@@ -26,6 +26,12 @@
             >
               <span class="brand-logo">
                 <b-img
+                  v-if="isDark"
+                  :src="darkAppLogoImage"
+                  alt="logo"
+                />
+                <b-img
+                  v-else
                   :src="appLogoImage"
                   alt="logo"
                 />
@@ -133,7 +139,7 @@ export default {
     const collapseTogglerIconFeather = computed(() => (collapseTogglerIcon.value === 'unpinned' ? 'CircleIcon' : 'DiscIcon'))
 
     // App Name
-    const { appName, appLogoImage } = $themeConfig.app
+    const { appName, appLogoImage, darkAppLogoImage } = $themeConfig.app
 
     return {
       navMenuItems,
@@ -154,9 +160,14 @@ export default {
       // App Name
       appName,
       appLogoImage,
+      darkAppLogoImage,
     }
   },
   computed: {
+    isDark() {
+      const { skin } = useAppConfig()
+      return skin.value === 'dark'
+    },
     current() {
       const preload = []
       const { selected } = this.$store.state.chains
