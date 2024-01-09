@@ -13,6 +13,8 @@
 <script>
 // This will be populated in `beforeCreate` hook
 import { $themeColors, $themeBreakpoints, $themeConfig } from '@themeConfig'
+import { injectSpeedInsights } from '@vercel/speed-insights'
+import { inject } from '@vercel/analytics'
 import { provideToast } from 'vue-toastification/composition'
 import { watch } from '@vue/composition-api'
 import useAppConfig from '@core/app-config/useAppConfig'
@@ -31,6 +33,8 @@ export default {
     LayoutFull,
   },
   setup() {
+    inject()
+    injectSpeedInsights()
     const { skin, skinClasses } = useAppConfig()
 
     // If skin is dark when initialized => Add class to body
