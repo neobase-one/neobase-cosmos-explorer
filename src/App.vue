@@ -96,7 +96,7 @@ export default {
     document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr')
   },
   created() {
-    inject()
+    inject({ debug: false })
     injectSpeedInsights({ debug: false })
     store.dispatch('chains/getQuotes')
     store.dispatch('chains/getAllIBCDenoms', this)
