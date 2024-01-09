@@ -33,8 +33,6 @@ export default {
     LayoutFull,
   },
   setup() {
-    inject()
-    injectSpeedInsights()
     const { skin, skinClasses } = useAppConfig()
 
     // If skin is dark when initialized => Add class to body
@@ -98,6 +96,8 @@ export default {
     document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr')
   },
   created() {
+    inject()
+    injectSpeedInsights({ debug: false })
     store.dispatch('chains/getQuotes')
     store.dispatch('chains/getAllIBCDenoms', this)
   },
