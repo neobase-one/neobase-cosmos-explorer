@@ -1,5 +1,5 @@
 {
-    "rewrites": [
-      { "source": "/canto/:path*", "destination": "/canto/index.html" }
-    ]
+  "rewrites": [
+    { "source": "/canto/:path*", "destination": "/canto/index.html" }
+  ]
 }
