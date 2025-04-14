@@ -108,6 +108,7 @@ export default class EthereumLedgerSigner implements OfflineAminoSigner {
     // console.log('hex1: ', domainSeparatorHex)
     const hashStructMessageHex = toHex(keccak256(TypedDataUtils.encodeData('Tx', eipToSign.message as Record<string, unknown>, types, SignTypedDataVersion.V4)))
     // console.log('hex2:', hashStructMessageHex)
+    // console.log('hex2:', hashStructMessageHex)
     const signature = await this.app.signEIP712HashedMessage(this.hdpath, domainSeparatorHex, hashStructMessageHex)
     let v: string = (signature.v - 27).toString(16)
     if (v.length < 2) {
